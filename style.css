@@ -1,0 +1,607 @@
+/* ================================================================
+   CSS
+   ================================================================ */
+
+/* ---------- Reset & base ---------- */
+* { margin: 0; padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: none;
+ outline: none;
+user-select: none; }
+
+:root{
+  --bg-void:      #0a0505;
+  --bg-deep:      #1c0808;
+  --ember-top:    #7a1414;
+  --ember-mid:    #3a0a0a;
+  --card-bg:      rgba(30, 10, 10, 0.55);
+  --card-border:  rgba(255, 180, 170, 0.18);
+  --rose:         #e8918a;
+  --rose-bright:  #ffb3a7;
+  --rose-dim:     #c98a83;
+  --text-soft:    #e9d9d4;
+  --text-faint:   #a98f8a;
+  --gold:         #d9a86c;
+  --serif:        'Playfair Display', 'Cormorant Garamond', serif;
+  --script:       'Cormorant Garamond', serif;
+  --body-font:    'Poppins', sans-serif;
+}
+
+html, body{
+  height: 100%;
+  background: var(--bg-void);
+  font-family: var(--body-font);
+  color: var(--text-soft);
+  overflow: hidden;
+}
+
+.not{
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #4a1414;
+  color: #d9a86c;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 40px;
+  box-shadow: 5px 5px 10px brown;
+}
+.not:hover{ background: #7a1414; }
+
+.enter{
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #4a1414;
+  color: #d9a86c;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 40px;
+  box-shadow: 5px 5px 10px brown;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.enter.show { opacity: 1; pointer-events: auto; }
+.enter:hover{ background: #7a1414; }
+
+/* ==========================================================
+   SPECIAL DAY INTRO
+========================================================== */
+.special-title{
+  font-family: Papyrus, fantasy;
+  font-size: 50px;
+  color: var(--rose-bright);
+  margin-bottom: 50px;
+  position: absolute;
+  top: 2px;
+  max-width: 92vw;
+  text-align: center;
+  word-wrap: break-word;
+  animation: dum 5s ease-in-out forwards;
+}
+@keyframes dum {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  40%{ top: 30%; transform: translateY(-30%) rotate(0deg);}
+  60%{ top: 30%; transform: translateY(30%) rotate(360deg);}
+  100%{ top: 0px; transform: translate(-50%) rotate(360deg);}
+}
+.image-1{
+  width: 200px;
+  height: 250px;
+  position: relative;
+  margin: auto;
+  transition: translate(-50%, -50%);
+  opacity: 0;
+  animation: come 1.5s 4s ease forwards;
+}
+.photo {
+  position: absolute;
+  width: 180px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed var(--card-border);
+}
+.photo:nth-child(1) { z-index: 5; }
+.photo:nth-child(2) { z-index: 4; }
+.photo:nth-child(3) { z-index: 3; }
+.photo:nth-child(4) { z-index: 2; }
+.photo:nth-child(5) { z-index: 1; }
+
+@keyframes come{ from{opacity: 0;} to{ opacity: 1;} }
+
+.photo.flying {
+  position: fixed;
+  transition: left 1s cubic-bezier(.22,1,.36,1),
+              top 1s cubic-bezier(.22,1,.36,1),
+              transform 1s cubic-bezier(.22,1,.36,1);
+  z-index: 50;
+  cursor: default;
+}
+.photo:not(.clickable) { cursor: default; }
+.photo.lining-up {
+  z-index: 100;
+  transition: left 1.1s cubic-bezier(.22,1,.36,1),
+              top 1.1s cubic-bezier(.22,1,.36,1),
+              transform 1.1s cubic-bezier(.22,1,.36,1);
+}
+
+/* ==========================================================
+   BIRTHDAY SCREEN
+========================================================== */
+.birt{
+  font-size: 50px;
+  font-family: SEKUYA, cursive;
+  margin-bottom: 100px;
+  color: #7a1414;
+  max-width: 92vw;
+  word-wrap: break-word;
+  animation: glow 2s ease-in-out infinite, big 2s ease-in-out infinite;
+}
+@keyframes glow{
+  0%, 100% { text-shadow: 0 0 5px #d9a86c, 0 0 15px #d9a86c, 0 0 30px #4a1414; }
+  50% { text-shadow: 0 0 10px #4a1414, 0 0 25px #e8918a, 0 0 45px #4a1414 }
+}
+@keyframes big{
+  0%, 100% { transform: scale(1) }
+  50% { transform: scale(1.15); }
+}
+
+/* ==========================================================
+   LETTER INTRO SCREEN
+========================================================== */
+.letter-title{
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+  margin-top: 10px;
+}
+.letter-hint{
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-bottom: 2px;
+}
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.box-wrap {
+  position: relative;
+  width: 160px;
+  height: 110px;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 30px;
+}
+.box-half {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(#c96b8a, #a84f70);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.6s cubic-bezier(.34,1.3,.64,1), opacity 0.6s ease;
+}
+.box-half.left { left: 0; border-radius: 10px 0 0 10px; transform-origin: left center; }
+.box-half.right { right: 0; border-radius: 0 10px 10px 0; transform-origin: right center; }
+.box-half.left::after,
+.box-half.right::after {
+  content: '🎀';
+  position: absolute;
+  top: 50%;
+  font-size: 26px;
+  transform: translateY(-50%);
+}
+.box-half.left::after { right: -13px; }
+.box-half.right::after { left: -13px; }
+.box-wrap.split .box-half.left { transform: translateX(-70px) rotateY(35deg); opacity: 0; }
+.box-wrap.split .box-half.right { transform: translateX(70px) rotateY(-35deg); opacity: 0; }
+.box-wrap.split { cursor: default; pointer-events: none; }
+.letter {
+  margin-top: -55px;
+  width: 100%;
+  max-width: 300px;
+  max-height: 0;
+  overflow: hidden;
+  background: #c98a83;
+  background-position: center;
+  color: #7a1414;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(210, 22, 22, 0.35);
+  opacity: 0;
+  transform: translateY(-15px) scale(0.9);
+  transition: max-height 0.6s ease 0.15s, opacity 0.6s ease 0.15s,
+              transform 0.6s ease 0.15s, margin-top 0.6s ease 0.15s;
+  position: relative;
+  z-index: 1;
+}
+.letter.visible {
+  margin-top: 14px;
+  max-height: 800px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.letter-inner { padding: 22px 24px; }
+.letter-inner p {
+  margin: 0 0 14px 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: #271212;
+  font-size: 16px;
+  font-weight: bolder;
+  text-shadow: 0 0 10px #7a1414;
+  line-height: 1.5;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+}
+.letter-inner p.shown { opacity: 1; max-height: 200px; }
+.reveal-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #8a7a7a;
+  font-style: italic;
+  cursor: pointer;
+}
+.letter-link {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 20px;
+  background: #4a1414;
+  color: #d9a86c;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 14px;
+  box-shadow: 2px 2px 5px brown;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+}
+.letter-link:hover{ background: #7a1414; }
+.letter-link.shown { opacity: 1; max-height: 60px; }
+
+/* ---------- App shell ---------- */
+#app{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* fixes mobile browser toolbar/URL-bar height jump */
+  overflow: hidden;
+  background:
+    radial-gradient(120% 60% at 50% 0%, var(--ember-top) 0%, transparent 60%),
+    radial-gradient(100% 80% at 50% 100%, var(--ember-mid) 0%, transparent 55%),
+    var(--bg-void);
+}
+#particles{ position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.particle{
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: rgba(255, 190, 180, 0.55);
+  box-shadow: 0 0 6px rgba(255,150,140,0.6);
+  animation: rise linear infinite;
+}
+@keyframes rise{
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+/* ---------- Screen management ---------- */
+.screen{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  text-align: center;
+  animation: fadeIn 0.7s ease both;
+}
+.screen.active{ display: flex; }
+@keyframes fadeIn{ from{ opacity: 0; transform: translateY(14px); } to{ opacity: 1; transform: translateY(0); } }
+@keyframes fadeOutUp{ to{ opacity: 0; transform: translateY(-14px); } }
+.screen.leaving{ animation: fadeOutUp 0.5s ease both; }
+
+.avatar-ring{
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  background: radial-gradient(circle at 35% 30%, #4a1414, #1a0606 70%);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 0 0 6px rgba(232,145,138,0.05), 0 0 30px rgba(232,145,138,0.25);
+  margin-bottom: 22px;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   LOCK SCREEN
+========================================================== */
+#screen-lock .avatar-ring{ animation: pulseGlow 2.6s ease-in-out infinite; }
+@keyframes pulseGlow{
+  0%,100%{ box-shadow: 0 0 0 6px rgba(232,145,138,0.05), 0 0 24px rgba(232,145,138,0.2); }
+  50%{ box-shadow: 0 0 0 9px rgba(232,145,138,0.08), 0 0 40px rgba(232,145,138,0.4); }
+}
+.lock-title{
+  font-family: var(--serif);
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+.lock-hint{
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-bottom: 26px;
+  min-height: 16px;
+  transition: color 0.3s ease;
+}
+.dots{
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
+  height: 14px;
+  align-items: center;
+}
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--rose-dim);
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+.dot.filled{
+  background: var(--rose-bright);
+  transform: scale(1.15);
+  box-shadow: 0 0 8px rgba(255,179,167,0.7);
+}
+.dot.error{ border-color: #ff6b6b; background: #ff6b6b; }
+.keypad{
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.key{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-soft);
+  font-size: 18px;
+  font-family: var(--body-font);
+  cursor: pointer;
+  transition: background .15s ease, transform .1s ease;
+}
+.key:hover{ background: rgba(255,255,255,0.08); }
+.key:active{ transform: scale(0.92); }
+.key.wide{ font-size: 16px; }
+.lock-shake{ animation: shake 0.4s; }
+@keyframes shake{
+  10%,90%{ transform: translateX(-4px); }
+  20%,80%{ transform: translateX(6px); }
+  30%,50%,70%{ transform: translateX(-9px); }
+  40%,60%{ transform: translateX(9px); }
+}
+
+/* ==========================================================
+   LOADING SCREEN
+========================================================== */
+.loader-emoji{ font-size: 54px; margin-bottom: 22px; animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob{
+  0%,100%{ transform: translateY(0) rotate(-4deg); }
+  50%{ transform: translateY(-10px) rotate(4deg); }
+}
+.loading-text{
+  font-family: var(--script);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.loading-bar{
+  width: 160px;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 22px;
+  overflow: hidden;
+}
+.loading-bar-fill{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--rose-dim), var(--rose-bright));
+  animation: fillBar 1.8s ease forwards;
+}
+@keyframes fillBar{ to{ width: 100%; } }
+
+/* ==========================================================
+   MEMORIES / GALLERY SCREEN
+========================================================== */
+.memories-heading{
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--rose-bright);
+  margin-bottom: 6px;
+}
+.memories-sub{
+  font-family: var(--script);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--text-faint);
+  margin-bottom: 24px;
+}
+.gallery-track{
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 10px 16px;
+  width: 100%;
+  max-width: 300px;
+  scrollbar-width: none;
+}
+.gallery-track::-webkit-scrollbar{ display: none; }
+.gallery-slide{
+  flex: 0 0 240px;
+  height: 300px;
+  scroll-snap-align: center;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+  font-size: 13px;
+  font-style: italic;
+}
+.gallery-slide img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-dots{ display: flex; gap: 8px; margin-bottom: 26px; }
+.gallery-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.gallery-dot.active{ background: var(--rose-bright); transform: scale(1.2); }
+
+
+#musicToggle{
+  position: fixed;
+}
+/* ==========================================================
+   END SCREEN
+========================================================== */
+.end-title{
+  font-family: var(--serif);
+  font-size: 30px;
+  color: var(--rose-bright);
+  margin-bottom: 10px;
+}
+.end-sub{
+  font-family: var(--script);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-faint);
+  margin-bottom: 30px;
+  max-width: 280px;
+}
+
+/* ================================================================
+   RESPONSIVE
+   Base CSS above is unchanged in appearance for laptops/desktops
+   (769px+) — that's what it was already tuned for. The blocks below
+   only adjust spacing/sizing for phones and tablets so nothing is
+   ever clipped, cut off, or forced to scroll sideways.
+   ================================================================ */
+
+/* ---------- Tablets (481px – 768px) ---------- */
+@media (max-width: 768px){
+  .screen{ padding: 30px 20px; }
+
+  .keypad{ grid-template-columns: repeat(3, 60px); gap: 13px; }
+  .key{ width: 60px; height: 60px; }
+}
+
+/* ---------- Mobile phones (320px – 480px) ---------- */
+@media (max-width: 480px){
+  .screen{ padding: 26px 16px; }
+
+  /* headline text: scale down so 50px display type never wraps
+     awkwardly or pushes past the viewport edge */
+  .special-title{ font-size: 38px; margin-bottom: 40px; }
+  .birt{ font-size: 34px; margin-bottom: 70px; }
+  .end-title{ font-size: 24px; }
+  .letter-title{ font-size: 22px; }
+  .memories-heading{ font-size: 22px; }
+  .memories-sub{ font-size: 17px; margin-bottom: 18px; }
+  .lock-title{ font-size: 22px; }
+
+  .avatar-ring{ width: 84px; height: 84px; font-size: 36px; margin-bottom: 18px; }
+
+  /* photo stack: shrink so the whole card fits comfortably with
+     room to spare on 320px-wide screens (JS reads the rendered
+     size at click-time, so no script changes are needed) */
+  .image-1{ width: 170px; height: 210px; }
+  .photo{ width: 150px; height: 195px; }
+
+  /* letter-opening scene */
+  .box-wrap{ width: 140px; height: 100px; font-size: 26px; }
+  .box-half.left::after,
+  .box-half.right::after{ font-size: 22px; }
+  .letter-inner{ padding: 18px 18px; }
+  .letter-inner p{ font-size: 14.5px; }
+
+  /* lock screen keypad: smaller keys buy extra side margin */
+  .keypad{ grid-template-columns: repeat(3, 56px); gap: 12px; }
+  .key{ width: 56px; height: 56px; font-size: 17px; }
+  .dots{ gap: 12px; }
+
+  .gallery-slide{ height: 260px; }
+}
+
+/* ---------- Extra-small phones (≤360px) ---------- */
+@media (max-width: 360px){
+  .screen{ padding: 22px 14px; }
+
+  .special-title{ font-size: 32px; }
+  .birt{ font-size: 29px; margin-bottom: 60px; }
+
+  .image-1{ width: 150px; height: 190px; }
+  .photo{ width: 132px; height: 176px; }
+
+  .keypad{ grid-template-columns: repeat(3, 50px); gap: 10px; }
+  .key{ width: 50px; height: 50px; font-size: 15px; }
+
+  .box-wrap{ width: 128px; height: 92px; }
+
+  .gallery-slide{ flex: 0 0 210px; height: 240px; }
+}
+
+/* ---------- Short / landscape viewports ----------
+   #app is locked to 100dvh with overflow:hidden, which is fine on
+   tall portrait screens but can clip content (e.g. the keypad or
+   the letter) on short/landscape phones. This lets the active
+   screen scroll instead of silently cutting content off. */
+@media (max-height: 640px){
+  html, body{ overflow-y: auto; }
+  #app{ height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; }
+  .screen{
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    overflow-y: auto;
+  }
+  .image-1{ width: 150px; height: 190px; }
+  .photo{ width: 132px; height: 176px; }
+  .special-title{ margin-bottom: 24px; }
+  .birt{ margin-bottom: 40px; }
+}

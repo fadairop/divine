@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday — Divine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+  <audio id="bgMusic" loop preload="auto" src="music.mp3"></audio>
+  <button id="musicToggle" aria-label="Toggle Music"></button>
+  <div id="app">
+    <div id="particles"></div>
+
+    <section class="screen active" id="screen-lock">
+      <div class="avatar-ring" id="lockAvatar">🔒</div>
+      <div class="lock-title">LOCKED</div>
+      <div class="lock-hint" id="lock-hint">Hint — click the icon above for a clue</div>
+      <div class="dots" id="dots"></div>
+      <div class="keypad" id="keypad"></div>
+      <a href="#" class="enter" id="lockEnter" data-target="screen-loading">Enter</a>
+    </section>
+
+    <section class="screen" id="screen-loading">
+      <div class="loader-emoji">🐼</div>
+      <div class="loading-text">Loading something special…</div>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-special">
+      <div class="special-title">🎉</div>
+      <div class="image-1" id="photoStack">
+        <img class="photo" alt="Memory 1" src="img1.png">
+        <img class="photo" alt="Memory 2" src="img2.png">
+        <img class="photo" alt="Memory 3" src="img3.png">
+        <img class="photo" alt="Memory 4" src="img4.png">
+        <img class="photo" alt="Memory 5" src="img5.png">
+        <img class="photo" alt="Memory 6" src="img6.png">
+      </div>
+      <a href="#" class="enter" id="specialEnter" data-target="screen-birthday">continue 🐼🐼</a>
+    </section>
+
+    <section class="screen" id="screen-birthday">
+      <div class="birt" id="birthday-title">Happy Birthday, Divine 🎀</div>
+      <a href="#" class="not" data-target="screen-letter-intro">Letter from a lover →</a>
+    </section>
+
+    <section class="screen" id="screen-letter-intro">
+      <div class="letter-title">A Letter, Just For You</div>
+      <div class="letter-hint">Tap the heart to unseal your message…</div>
+
+      <div class="scene">
+        <div class="box-wrap" id="boxWrap">
+          <div class="box-half left" id="boxLeft">💌</div>
+          <div class="box-half right" id="boxRight">💌</div>
+        </div>
+
+        <div class="letter" id="letter">
+          <div class="letter-inner" id="letterInner">
+            <p data-index="0">Happy birthday,
+              beautiful!
+              🎂🎉🥳❤️💕✨ May your day sparkle
+              wonderfully! 😍🎊🎈
+            </p>
+            <p data-index="1">You deserve happiness,
+              love, laughter,
+              success, and everything
+              beautiful! 🥰💐❤️✨🎁</p>
+            <p data-index="2">I’m grateful to know you and
+              cherish every moment! 💕🥹😍🌹✨
+            </p>
+            <p data-index="3">May this chapter
+              bring your
+              heart endless joy! 🎉🎂❤️🥳💫💖
+            </p>
+            <a href="#" class="letter-link" id="letterLink" data-target="screen-memories">Next memory →</a>
+          </div>
+        </div>
+
+        <div class="reveal-hint" id="hint">tap the box to open it</div>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-memories">
+      <div class="memories-heading">Special Memories</div>
+      <div class="memories-sub">Click to watch something prepared for you ✦</div>
+      <div class="gallery-track" id="gallery-track">
+        <div class="gallery-slide"><img src="img14.png" alt="Memory 1"></div>
+        <div class="gallery-slide"><img src="img9.png" alt="Memory 2"></div>
+        <div class="gallery-slide"><img src="img8.png" alt="Memory 3"></div>
+        <div class="gallery-slide"><img src="img10.png" alt="Memory 4"></div>
+        <div class="gallery-slide"><img src="img11.png" alt="Memory 5"></div>
+        <div class="gallery-slide"><img src="img13.png" alt="Memory 6"></div>
+      </div>
+      <div class="gallery-dots" id="gallery-dots"></div>
+      <a href="#" class="not" data-target="screen-end">LET GO →</a>
+    </section>
+
+    <section class="screen" id="screen-end">
+      <div class="avatar-ring">💗</div>
+      <div class="end-title">Happy Birthday, Divine</div>
+      <div class="end-sub">I hope today brought you as much joy as you bring into everyone else's life.</div>
+      <a href="#" class="not" id="restartBtn">Restart ↺</a>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
